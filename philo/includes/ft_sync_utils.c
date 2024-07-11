@@ -33,10 +33,8 @@ void	fairly_synchronize_philos(t_philo *philo)
 			precise_usleep(3e4, philo->data);
 	}
 	else
-	{
 		if (philo->id % 2)
 			thinking(philo, true);
-	}
 }
 
 bool	all_threads_running(t_mtx *mutex, long *threads,

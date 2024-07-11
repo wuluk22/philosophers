@@ -11,14 +11,12 @@
 # **************************************************************************** #
 
 NAME	= philo
-SRC		= includes/ft_clean.c\
-		  	includes/ft_data.c\
-			includes/ft_dead.c\
+SRC		= includes/ft_dinner.c\
 			includes/ft_get_set.c\
 			includes/ft_init.c\
+			includes/ft_monitor.c\
 			includes/ft_parsing.c\
 			includes/ft_philo.c\
-			includes/ft_print.c\
 			includes/ft_safe.c\
 			includes/ft_sync_utils.c\
 			includes/ft_utils.c

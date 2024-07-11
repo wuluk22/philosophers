@@ -22,10 +22,6 @@
 # include <limits.h>
 # include <string.h>
 # include <stdbool.h>
-# include <stdatomic.h>
-# define RED "\033[1;31m"
-# define GREEN "\033[1;32m"
-# define DEBUG_MODE 0
 # ifndef PHILO_MAX
 #  define PHILO_MAX 200 
 # endif
@@ -62,7 +58,6 @@ typedef struct s_philo
 	long			meal_count;
 	bool			full;
 	long			last_meal_time;
-	int				nbr_eat;
 	t_fork			*left_fork;
 	t_fork			*right_fork;
 	int				state;
@@ -82,9 +77,6 @@ typedef struct s_data
 	bool				end_time;
 	bool				all_threads_ready;
 	long				running_threads;
-	//int				dead;
-	//atomic_int		eat_en;
-	//int				all_eat;
 	t_philo				*philo;
 	t_mtx				data_mutex;
 	t_mtx				m_print;
@@ -111,17 +103,11 @@ typedef enum e_status
 	ESRCH,
 }	t_philo_status;
 
-//--- ft_clean.c
-void	clean(t_data *data);
-
-//--- ft_data.c
+//--- ft_dinner.c
 void	thinking(t_philo *philo, bool pre_simulation);
 void	*only_one_philo(void *arg);
 void	*dinner_simulation(void *data);
 void	start_dinner(t_data *data);
-
-//--- ft_dead.c
-void	*monitor_dinner(void *data);
 
 //--- ft_get_set.c
 void	set_bool(t_mtx *mutex, bool *dest, bool value);
@@ -133,11 +119,14 @@ bool	simulation_end(t_data *data);
 //--- ft_init.c
 void	data_init(t_data *data);
 
+//--- ft_monitor.c
+void	*monitor_dinner(void *data);
+
 //--- ft_parsing.c
 long	ft_atol(const char *str);
 void	parse_input(t_data *data, char **av);
 
-//--- ft_print.c
+//--- ft_philo.c
 void	write_status(t_philo_status status, t_philo *philo);
 
 //--- ft_safe.c
@@ -154,12 +143,9 @@ bool	all_threads_running(t_mtx *mutex, long *threads,
 			long philo_nbr);
 
 //--- ft_utils.c
+void	clean(t_data *data);
 long	get_time(t_time_code time_code);
 void	error_exit(const char *error);
 void	precise_usleep(long usec, t_data *data);
-
-//int			check_value(char **av);
-//void		ft_sleep(t_data *data, time_t end);
-//void		*routine(void *data_pointer);
 
 #endif

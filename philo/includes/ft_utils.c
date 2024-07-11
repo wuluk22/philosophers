@@ -12,6 +12,23 @@
 
 #include "philo.h"
 
+void	clean(t_data *data)
+{
+	t_philo	*philo;
+	int		i;
+
+	i = -1;
+	while (++i < data->nbr_philo)
+	{
+		philo = data->philo + i;
+		safe_mutex(&philo->philo_mutex, DESTROY);
+	}
+	safe_mutex(&data->m_print, DESTROY);
+	safe_mutex(&data->data_mutex, DESTROY);
+	free(data->forks);
+	free(data->philo);
+}
+
 long	get_time(t_time_code time_code)
 {
 	struct timeval	tv;
