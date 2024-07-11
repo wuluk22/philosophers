@@ -58,7 +58,7 @@ static void	eat(t_philo *philo)
 	write_status(EATING, philo);
 	precise_usleep(philo->data->t_to_eat, philo->data);
 	if (philo->data->lmt_number_meals > 0
-		&& philo->meal_count == philo->data->lmt_number_meals)
+		&& philo->meal_count - 1 == philo->data->lmt_number_meals)
 		set_bool(&philo->philo_mutex, &philo->full, true);
 	safe_mutex(&philo->right_fork->fork, UNLOCK);
 	safe_mutex(&philo->left_fork->fork, UNLOCK);
@@ -92,9 +92,9 @@ void	start_dinner(t_data *data)
 	int			i;
 
 	i = -1;
-	if (0 == data->lmt_number_meals)
+	if (data->lmt_number_meals == 0)
 		return ;
-	else if (1 == data->nbr_philo)
+	else if (data->nbr_philo == 1)
 		safe_thread(&data->philo[0].thread_id, only_one_philo,
 			&data->philo[0], CREATE);
 	else

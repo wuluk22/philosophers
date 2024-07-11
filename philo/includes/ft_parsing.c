@@ -65,6 +65,8 @@ void	parse_input(t_data *data, char **av)
 		printf("%d is the max of philos\n", PHILO_MAX);
 		exit(EXIT_FAILURE);
 	}
+	if (data->nbr_philo == 0)
+		error_exit("not enough philos");
 	data->t_to_die = ft_atol(av[2]) * 1e3;
 	data->t_to_eat = ft_atol(av[3]) * 1e3;
 	data->t_to_sleep = ft_atol(av[4]) * 1e3;
