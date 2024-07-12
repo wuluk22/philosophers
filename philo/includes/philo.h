@@ -107,7 +107,7 @@ typedef enum e_status
 void	thinking(t_philo *philo, bool pre_simulation);
 void	*only_one_philo(void *arg);
 void	*dinner_simulation(void *data);
-void	start_dinner(t_data *data);
+void	dinner_prep(t_data *data);
 
 //--- ft_get_set.c
 void	set_bool(t_mtx *mutex, bool *dest, bool value);

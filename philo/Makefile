@@ -11,18 +11,18 @@
 # **************************************************************************** #
 
 NAME	= philo
-SRC		= includes/ft_dinner.c\
-			includes/ft_get_set.c\
-			includes/ft_init.c\
-			includes/ft_monitor.c\
-			includes/ft_parsing.c\
-			includes/ft_philo.c\
-			includes/ft_safe.c\
-			includes/ft_sync_utils.c\
-			includes/ft_utils.c
+SRC		= src/ft_dinner.c\
+			src/ft_get_set.c\
+			src/ft_init.c\
+			src/ft_monitor.c\
+			src/ft_parsing.c\
+			src/ft_philo.c\
+			src/ft_safe.c\
+			src/ft_sync_utils.c\
+			src/ft_utils.c
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra -Iincludes/
+CFLAGS	= -Wall -Werror -Wextra -Iincludes/ -Isrc/
 COMP	= $(CC) $(CFLAGS)
 RM		= rm -f
 
