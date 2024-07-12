@@ -63,6 +63,3 @@ void	data_init(t_data *data)
 	}
 	philo_init(data);
 }
-
-// --- 46:21 ---
-// --- 1:34:36 ---
